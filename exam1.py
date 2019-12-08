@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[15]:
+#PART
+# 題目1
 
 
+import pandas as pd
 urls = [
     "http://www.google.com/a.txt",
     "http://www.google.com.tw/a.txt",
@@ -19,19 +21,23 @@ Dict_ = {}
 
 for i in urls:
     element = i.split("/")[-1]
-#     print(element)
+    print(element)
     if not element in Dict_:
         Dict_[element] = 1
 
     elif element in Dict_:
         Dict_[element] += 1
-
 print(Dict_)
+del Dict_['haha.png']
+
+select = pd.Series(Dict_, index = Dict_.keys())
+print(select[[0,2,1]])  
 
 
 
 
-# In[51]:
+
+# 題目2 未作答
 
 
 def anonymous(x):
@@ -49,32 +55,29 @@ def integrate(fun, start, end):
 print(integrate(anonymous, 0, 10))
 
 
-# In[10]:
 
+#題目3
 
 import numpy as np
 
-goal = 1000
-n3 = []
-n5 = []
-n3_and_n5 = []
+n3 = [] #三的倍數
+n5 = [] #五的倍數
+n3_n5 = [] #三跟五的倍數
 
-for i in range(1, goal):
+for i in range(1,1000):
     if i % 3 == 0 and i % 5 != 0:
         n3.append(i)
-    elif i % 5 == 0 and i % 3 != 0:
+    elif i % 5 == 0 and i%3 != 0:
         n5.append(i)
-    elif i % 3 == 0 and i % 5 == 0:
-        n3_and_n5.append(i)
-
-N3 = np.array(n3)
-N5 = np.array(n5)
-N3_5 = np.array(n3_and_n5)
-
-print("the sum of all the multiples of 3 or 5 below 1000 : ", np.sum(N3) + np.sum(N5) + np.sum(N3_5))
+    elif i % 5 ==0 and i%3 == 0:
+        n3_n5.append(i)
+n3_sum = np.sum(n3)
+n5_sum = np.sum(n5)
+n3_n5_sum = np.sum(n3_n5)
+print("the sum of all the multiples of 3 or 5 below 1000 :", n3_sum + n5_sum + n3_n5_sum)
 
 
-# In[72]:
+# PART2 第二題
 
 
 from flask import Flask
